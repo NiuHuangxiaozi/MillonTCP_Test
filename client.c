@@ -107,10 +107,7 @@ int main()
     for(int index = 0; index < MAX_CONNECTION; index++)
     {
       int connect_state = connect(fd_array[ip_index][index], (void *)&server_vaddr, sizeof(server_vaddr));
-      if(connect_state<0 && errno != EINPROGRESS)
-      {
-        printf("error\n");
-      }
+      printf("connection send\n");
     }
   }
 
