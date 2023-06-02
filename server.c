@@ -46,8 +46,10 @@ int main()
   int liston_val = listen(sockfd, 1000000);
   assert(liston_val >= 0);
 
+  
   printf("wait on port %d\n", bind_port);
-  for(int i=0;i<MAX_CON;i++)
+  int i=0;
+  while(1)
   {
     int new_conFd = accept(sockfd, (struct sockaddr *)&addr, (socklen_t *)&addr_lenth);
     if (new_conFd <= 0)
@@ -59,14 +61,18 @@ int main()
      
       pthread_mutex_lock(count_mutex);
       fds[i]=new_conFd;
+      i++;
       max_connection++;
-      printf("%d accept success! cur connection %d\n", bind_port, max_connection);
+      if(max_connection%100000==0)
+         printf("%d accept success! cur connection %d\n", bind_port, max_connection);
       pthread_mutex_unlock(count_mutex);
     }
+    if(max_connection==1000000)
+      break;
   }
-  
-    sleep(120);
-    for(int j=0;j<MAX_CON;j++)
+  printf("connection over!\n");
+  sleep(120);
+  for(int j=0;j<MAX_CON;j++)
     {
       close(fds[j]);
     }
