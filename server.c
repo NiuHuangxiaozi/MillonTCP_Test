@@ -71,7 +71,7 @@ int main()
       break;
   }
   printf("connection over!\n");
-  sleep(120);
+  sleep(360);
   for(int j=0;j<MAX_CON;j++)
     {
       close(fds[j]);
