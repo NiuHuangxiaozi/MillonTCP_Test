@@ -55,7 +55,7 @@ fs.nr_open=1100000
 
 ### 2、Experiment
 
-Compile and run two ".c" file. And you can see the result by using command:
+Compile and run two ".c" file. First run server and then run client. And you can see the result by using command:
 
 ```
 watch "ss -t -a |grep ESTAB |wc -l"
