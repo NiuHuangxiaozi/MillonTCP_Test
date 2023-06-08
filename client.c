@@ -111,7 +111,7 @@ int main()
     }
   }
 
-  sleep(120);
+  sleep(360);
   for(int ip_index=0;ip_index<50;ip_index++)
   {
     for(int index = 0; index < MAX_CONNECTION; index++)
